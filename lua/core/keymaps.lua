@@ -66,3 +66,6 @@ map("n", "<leader>sh", "<cmd>split<cr>", "Horizontal split")
 -- ── Terminal ──────────────────────────────────────────────────────────────────
 map("n", "<leader>tt", "<cmd>vsplit | terminal<cr>", "Open terminal")
 map("t", "<Esc><Esc>", "<C-\\><C-n>", "Exit terminal mode")
+
+vim.g.copilot_no_tab_map = true
+vim.keymap.set("i", "<S-Tab>", 'copilot#Accept("\\<S-Tab>")', { expr = true, replace_keycodes = false })
