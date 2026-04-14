@@ -110,6 +110,28 @@ return {
       })
       vim.lsp.enable("pyright")
 
+      -- ── C/C++: clangd ─────────────────────────────────────────────────────────
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = { "c", "cpp", "objc", "objcpp" },
+        callback = function()
+          vim.lsp.start({
+            name = "clangd",
+            cmd = {
+              "/usr/lib/llvm-22/bin/clangd",
+              "--background-index",
+              "--clang-tidy",
+              "--log=error",
+            },
+            root_dir = vim.fs.root(0, { "compile_commands.json", ".clangd", ".git", "Makefile" }),
+            capabilities = capabilities,
+          })
+        end,
+      })
+
+      -- ── CMake: neocmakelsp ─────────────────────────────────────────────────────────
+      vim.lsp.config("neocmake", {})
+      vim.lsp.enable("neocmake")
+
       -- ── Lua ───────────────────────────────────────────────────────────────
       vim.lsp.config("lua_ls", {
         capabilities = capabilities,

@@ -23,8 +23,8 @@ return {
         function()
           require("conform").format({ async = true, lsp_fallback = true })
         end,
-        mode  = { "n", "v" },
-        desc  = "Format buffer",
+        mode = { "n", "v" },
+        desc = "Format buffer",
       },
     },
     opts = {
@@ -33,11 +33,13 @@ return {
       -- sorting (ruff organise-imports).  Install with: pip install ruff
       -- or: mason will install it when listed in mason-tool-installer below.
       formatters_by_ft = {
+        c = { "clang_format" },
+        cpp = { "clang_format" },
         python = { "ruff_format", "ruff_organize_imports" },
-        lua    = { "stylua" },
-        sh     = { "shfmt" },
-        json   = { "prettier" },
-        yaml   = { "prettier" },
+        lua = { "stylua" },
+        sh = { "shfmt" },
+        json = { "prettier" },
+        yaml = { "prettier" },
         markdown = { "prettier" },
         -- Add more here: e.g.  javascript = { "prettier" }
       },
@@ -73,10 +75,7 @@ return {
       -- Toggle format-on-save
       vim.keymap.set("n", "<leader>tf", function()
         vim.g.disable_autoformat = not vim.g.disable_autoformat
-        vim.notify(
-          "Format on save: " .. (vim.g.disable_autoformat and "OFF" or "ON"),
-          vim.log.levels.INFO
-        )
+        vim.notify("Format on save: " .. (vim.g.disable_autoformat and "OFF" or "ON"), vim.log.levels.INFO)
       end, { desc = "Toggle format on save" })
     end,
   },
@@ -88,16 +87,17 @@ return {
     opts = {
       ensure_installed = {
         -- LSP servers (Mason package names; configured in lsp.lua)
-        "pyright",                -- Python LSP
-        "lua-language-server",    -- Lua LSP
-        "bash-language-server",   -- Bash LSP
-        "json-lsp",               -- JSON LSP
-        "yaml-language-server",   -- YAML LSP
+        "clangd", -- C/C++ LSP
+        "pyright", -- Python LSP
+        "lua-language-server", -- Lua LSP
+        "bash-language-server", -- Bash LSP
+        "json-lsp", -- JSON LSP
+        "yaml-language-server", -- YAML LSP
         -- Linters & formatters
-        "ruff",                   -- Python linter + formatter
-        "stylua",                 -- Lua formatter
-        "shfmt",                  -- Shell formatter
-        "prettier",               -- JSON/YAML/Markdown formatter
+        "ruff", -- Python linter + formatter
+        "stylua", -- Lua formatter
+        "shfmt", -- Shell formatter
+        "prettier", -- JSON/YAML/Markdown formatter
       },
       auto_update = false,
     },
