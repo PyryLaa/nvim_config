@@ -93,22 +93,11 @@ return {
         vim.env.PATH = mason_bin .. ":" .. vim.env.PATH
       end
 
-      -- ── Python: Pyright ──────────────────────────────────────────────────
-      vim.lsp.config("pyright", {
+      -- ── Bash ─────────────────────────────────────────────────────────────
+      vim.lsp.config("bashls", {
         capabilities = capabilities,
-        settings = {
-          python = {
-            analysis = {
-              typeCheckingMode = "off", -- Pylance defaults to off
-              autoSearchPaths = true,
-              useLibraryCodeForTypes = true,
-              diagnosticMode = "openFilesOnly", -- Pylance default, not "workspace"
-              autoImportCompletions = true,
-            },
-          },
-        },
       })
-      vim.lsp.enable("pyright")
+      vim.lsp.enable("bashls")
 
       -- ── C/C++: clangd ─────────────────────────────────────────────────────────
       vim.api.nvim_create_autocmd("FileType", {
@@ -132,6 +121,10 @@ return {
       vim.lsp.config("neocmake", {})
       vim.lsp.enable("neocmake")
 
+      -- ── JSON ─────────────────────────────────────────────────────────────
+      vim.lsp.config("jsonls", { capabilities = capabilities })
+      vim.lsp.enable("jsonls")
+
       -- ── Lua ───────────────────────────────────────────────────────────────
       vim.lsp.config("lua_ls", {
         capabilities = capabilities,
@@ -145,15 +138,28 @@ return {
       })
       vim.lsp.enable("lua_ls")
 
-      -- ── Bash ─────────────────────────────────────────────────────────────
-      vim.lsp.config("bashls", {
+      -- ── Markdown: marksman ──────────────────────────────────────────────────
+      vim.lsp.config(
+        "marksman",
+        { capabilities = capabilities, filetypes = { "markdown" }, root_markers = { ".marksman.toml", ".git" } }
+      )
+      vim.lsp.enable("marksman")
+      -- ── Python: Pyright ──────────────────────────────────────────────────
+      vim.lsp.config("pyright", {
         capabilities = capabilities,
+        settings = {
+          python = {
+            analysis = {
+              typeCheckingMode = "off", -- Pylance defaults to off
+              autoSearchPaths = true,
+              useLibraryCodeForTypes = true,
+              diagnosticMode = "openFilesOnly", -- Pylance default, not "workspace"
+              autoImportCompletions = true,
+            },
+          },
+        },
       })
-      vim.lsp.enable("bashls")
-
-      -- ── JSON ─────────────────────────────────────────────────────────────
-      vim.lsp.config("jsonls", { capabilities = capabilities })
-      vim.lsp.enable("jsonls")
+      vim.lsp.enable("pyright")
 
       -- ── YAML ─────────────────────────────────────────────────────────────
       vim.lsp.config("yamlls", { capabilities = capabilities })
