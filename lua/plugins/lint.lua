@@ -36,7 +36,6 @@ return {
         python = { "ruff" },
         -- Uncomment to also run mypy for type errors:
         -- python = { "ruff", "mypy" },
-        sh = { "shellcheck" },
         -- Add more, e.g.:
         -- javascript = { "eslint_d" },
       }

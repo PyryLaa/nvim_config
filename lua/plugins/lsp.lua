@@ -146,7 +146,9 @@ return {
       vim.lsp.enable("lua_ls")
 
       -- ── Bash ─────────────────────────────────────────────────────────────
-      vim.lsp.config("bashls", { capabilities = capabilities })
+      vim.lsp.config("bashls", {
+        capabilities = capabilities,
+      })
       vim.lsp.enable("bashls")
 
       -- ── JSON ─────────────────────────────────────────────────────────────
