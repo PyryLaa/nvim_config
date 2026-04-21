@@ -92,7 +92,6 @@ return {
         "lua-language-server", -- Lua LSP
         "bash-language-server", -- Bash LSP
         "json-lsp", -- JSON LSP
-        "marksman", -- Markdown LSP
         "yaml-language-server", -- YAML LSP
         -- Linters & formatters
         "ruff", -- Python linter + formatter
