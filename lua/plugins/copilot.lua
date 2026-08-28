@@ -7,6 +7,10 @@ return {
   {
     -- copilot itself
     "github/copilot.vim",
+    keys = {
+      { "<leader>cd", "<cmd>Copilot disable<cr>", desc = "Disable Copilot" },
+      { "<leader>ce", "<cmd>Copilot enable<cr>", desc = "Enable Copilot" },
+    },
   },
   {
     -- copilot chat
