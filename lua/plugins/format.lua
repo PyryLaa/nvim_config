@@ -41,6 +41,7 @@ return {
         json = { "prettier" },
         yaml = { "prettier" },
         markdown = { "prettier" },
+        rust = { "rustfmt" },
         -- Add more here: e.g.  javascript = { "prettier" }
       },
 
@@ -93,6 +94,7 @@ return {
         "bash-language-server", -- Bash LSP
         "json-lsp", -- JSON LSP
         "yaml-language-server", -- YAML LSP
+        "rust-analyzer", -- Rust LSP
         -- Linters & formatters
         "ruff", -- Python linter + formatter
         "stylua", -- Lua formatter

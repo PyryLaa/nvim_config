@@ -51,7 +51,7 @@ autocmd("FileType", {
     vim.opt_local.tabstop = 4
     vim.opt_local.shiftwidth = 4
     vim.opt_local.expandtab = true
-    vim.opt_local.colorcolumn = "88" -- ruff's default line length
+    vim.opt_local.colorcolumn = "100" -- ruff's default line length
   end,
 })
 
@@ -76,5 +76,14 @@ autocmd("VimEnter", {
       vim.env.PATH = venv .. "/bin:" .. vim.env.PATH
       vim.notify("Activated .venv", vim.log.levels.INFO)
     end
+  end,
+})
+
+augroup("TreesitterHighlight", { clear = true })
+autocmd("FileType", {
+  group = "TreesitterHighlight",
+  pattern = "*",
+  callback = function()
+    pcall(vim.treesitter.start)
   end,
 })

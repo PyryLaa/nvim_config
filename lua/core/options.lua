@@ -60,3 +60,10 @@ opt.completeopt = { "menuone", "noselect" } -- Completion behaviour for nvim-cmp
 opt.foldmethod = "expr"
 opt.foldexpr = "nvim_treesitter#foldexpr()"
 opt.foldenable = false -- Open all folds by default
+
+-- Native treesitter highlighting (Neovim 0.12 built-in)
+vim.api.nvim_create_autocmd("FileType", {
+  callback = function()
+    pcall(vim.treesitter.start)
+  end,
+})

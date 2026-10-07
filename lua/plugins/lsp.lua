@@ -161,6 +161,20 @@ return {
       })
       vim.lsp.enable("pyright")
 
+      -- ── Rust: rust-analyzer ──────────────────────────────────────────────
+      vim.lsp.config("rust_analyzer", {
+        capabilities = capabilities,
+        settings = {
+          ["rust-analyzer"] = {
+            cargo = { allFeatures = true },
+            checkOnSave = true,
+            check = { command = "clippy" },
+            procMacro = { enable = true },
+          },
+        },
+      })
+      vim.lsp.enable("rust_analyzer")
+
       -- ── YAML ─────────────────────────────────────────────────────────────
       vim.lsp.config("yamlls", { capabilities = capabilities })
       vim.lsp.enable("yamlls")

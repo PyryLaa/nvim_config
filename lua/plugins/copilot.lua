@@ -21,7 +21,7 @@ return {
     build = "make tiktoken",
     opts = {
       -- See Configuration section for options
-      model = "claude-sonnet-4.5",
+      model = "claude-opus-4.8",
     },
     keys = {
       { "<leader>cc", "<cmd>CopilotChat<cr>", desc = "Open Copilot Chat" },
