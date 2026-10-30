@@ -41,16 +41,17 @@ return {
       }
 
       -- ── Ruff linter configuration ─────────────────────────────────────────
-      -- You can also configure ruff via a pyproject.toml or ruff.toml in your
-      -- project root — that is the recommended approach.
+      -- Let ruff discover rules/settings from pyproject.toml or ruff.toml in the
+      -- project root. Do NOT pass --select here, or it overrides your config.
       lint.linters.ruff = vim.tbl_extend("force", lint.linters.ruff or {}, {
         args = {
           "check",
-          "--select",
-          "E,F,W,I,UP,B,A,C4,SIM", -- Rule sets to enable
-          -- "ALL" enables every rule — usually too noisy
           "--output-format",
           "json",
+          "--stdin-filename",
+          function()
+            return vim.api.nvim_buf_get_name(0)
+          end,
           "-", -- Read from stdin
         },
       })

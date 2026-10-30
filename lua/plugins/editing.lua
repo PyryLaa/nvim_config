@@ -21,7 +21,19 @@ return {
     "kylechui/nvim-surround",
     version = "*",
     event = "VeryLazy",
-    opts = {},
+    init = function()
+      -- must be set before the plugin loads
+      vim.g.nvim_surround_no_visual_mappings = true
+    end,
+    config = function()
+      require("nvim-surround").setup({}) -- optional; only needed if you pass options
+      vim.keymap.set("x", "gs", "<Plug>(nvim-surround-visual)", {
+        desc = "Add a surrounding pair around a visual selection",
+      })
+      vim.keymap.set("x", "gS", "<Plug>(nvim-surround-visual-line)", {
+        desc = "Add a surrounding pair around a visual selection, on new lines",
+      })
+    end,
   },
 
   -- ── Toggle comments ────────────────────────────────────────────────────────
@@ -44,7 +56,7 @@ return {
     "folke/trouble.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     keys = {
-      { "<leader>xx", "<cmd>TroubleToggle<cr>", desc = "Trouble: toggle" },
+      { "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>", desc = "Trouble: toggle" },
       { "<leader>xd", "<cmd>TroubleToggle document_diagnostics<cr>", desc = "Trouble: document" },
       { "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "Trouble: workspace" },
       { "<leader>xl", "<cmd>TroubleToggle loclist<cr>", desc = "Trouble: loclist" },

@@ -22,6 +22,7 @@ return {
     opts = {
       -- See Configuration section for options
       model = "claude-opus-4.8",
+      trusted_tools = { "file", "grep", "glob" },
     },
     keys = {
       { "<leader>cc", "<cmd>CopilotChat<cr>", desc = "Open Copilot Chat" },
