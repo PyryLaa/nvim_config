@@ -87,3 +87,13 @@ autocmd("FileType", {
     pcall(vim.treesitter.start)
   end,
 })
+
+-- Auto-command to customize copilot chat buffer behavior
+vim.api.nvim_create_autocmd("BufEnter", {
+  pattern = "copilot-chat",
+  callback = function()
+    vim.opt_local.relativenumber = false
+    vim.opt_local.number = false
+    vim.opt_local.conceallevel = 0
+  end,
+})

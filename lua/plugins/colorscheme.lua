@@ -15,6 +15,7 @@ return {
         -- optional configuration here
       })
       require("bamboo").load()
+      vim.api.nvim_set_hl(0, "CopilotChatHeader", { fg = "#7C3AED", bold = true })
     end,
   },
 }
